@@ -13,9 +13,9 @@ npx cap sync
 
 <docgen-index>
 
-* [`addListener(T, ...)`](#addlistenert)
 * [`createProfile(...)`](#createprofile)
-* [`alert()`](#alert)
+* [`addListener(E, ...)`](#addlistenere)
+* [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 
@@ -24,44 +24,42 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### addListener(T, ...)
-
-```typescript
-addListener<T extends keyof DataWedgeEvents>(eventName: T, listenerFunc: (event: DataWedgeEvents[T]) => void) => PluginListenerHandle
-```
-
-| Param              | Type                                                |
-| ------------------ | --------------------------------------------------- |
-| **`eventName`**    | <code>T</code>                                      |
-| **`listenerFunc`** | <code>(event: DataWedgeEvents[T]) =&gt; void</code> |
-
-**Returns:** <code><a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
-
---------------------
-
-
 ### createProfile(...)
 
 ```typescript
-createProfile(options: { name: string; }) => Promise<any>
+createProfile(options: { name: string; }) => any
 ```
 
 | Param         | Type                           |
 | ------------- | ------------------------------ |
 | **`options`** | <code>{ name: string; }</code> |
 
-**Returns:** <code>Promise&lt;any&gt;</code>
+**Returns:** <code>any</code>
 
 --------------------
 
 
-### alert()
+### addListener(E, ...)
 
 ```typescript
-alert() => Promise<any>
+addListener<E extends keyof DataWedgeEvents>(eventName: E, listenerFunc: (event: DataWedgeEvents[E]) => void) => PluginListenerHandle
 ```
 
-**Returns:** <code>Promise&lt;any&gt;</code>
+| Param              | Type                                                |
+| ------------------ | --------------------------------------------------- |
+| **`eventName`**    | <code>E</code>                                      |
+| **`listenerFunc`** | <code>(event: DataWedgeEvents[E]) =&gt; void</code> |
+
+**Returns:** <code><a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
+
+--------------------
+
+
+### removeAllListeners()
+
+```typescript
+removeAllListeners() => void
+```
 
 --------------------
 
@@ -71,9 +69,9 @@ alert() => Promise<any>
 
 #### PluginListenerHandle
 
-| Prop         | Type                                      |
-| ------------ | ----------------------------------------- |
-| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
+| Prop         | Type                      |
+| ------------ | ------------------------- |
+| **`remove`** | <code>() =&gt; any</code> |
 
 
 #### DataWedgeCommandResult

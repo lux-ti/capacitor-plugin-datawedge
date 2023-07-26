@@ -20,8 +20,10 @@ type DataWedgeEvents = {
 }
 
 export interface DataWedgePlugin {
-  createProfile(options: { name: string }): Promise<any>;
-
+  
   addListener<E extends keyof DataWedgeEvents>(eventName: E, listenerFunc: (event: DataWedgeEvents[E]) => void): PluginListenerHandle;
   removeAllListeners(): void;
+
+  createProfile(options: { name: string }): Promise<any>;
+  alert():void
 }

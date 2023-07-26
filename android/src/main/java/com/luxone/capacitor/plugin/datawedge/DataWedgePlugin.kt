@@ -37,4 +37,16 @@ class DataWedgePlugin : Plugin() {
         dw.createProfile(name)
 
     }
+
+    @PluginMethod()
+    fun alert(@Suppress("UNUSED_PARAMETER") call: PluginCall) {
+        val generator = ToneGenerator(
+            AudioManager.STREAM_ALARM,
+            100
+        )
+
+        generator.startTone(ToneGenerator.TONE_CDMA_EMERGENCY_RINGBACK)
+        SystemClock.sleep(5000)
+        generator.release()
+    }
 }
