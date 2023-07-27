@@ -1,46 +1,55 @@
-import { WebPlugin } from '@capacitor/core';
+import { PluginListenerHandle, WebPlugin } from '@capacitor/core';
 import { DataWedgePlugin, DataWedgeScanResult } from './definitions';
 
+
+const listenersMap = new Map<string, Set<Function>>();
+
 export class DataWedgeWeb extends WebPlugin implements DataWedgePlugin {
+
   initVirtual() {
-    const reader = window.open('', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+    // @ts-ignore
+   globalThis.dw = this
+  }
 
-    if (reader) {
-      const form = reader.document.createElement('form')
-      const data = reader.document.createElement('input')
-      const btn = reader.document.createElement('button')
+  // @ts-ignore
+  addListener(eventName: any, listenerFunc: any): PluginListenerHandle {   
+    console.log('DW: addListener', eventName, listenerFunc);
+     
+    const l = listenersMap.get(eventName) ?? new Set()
 
-      btn.innerText = 'Enviar'
+    l.add(listenerFunc)
 
-      const title = reader.document.createElement('h1')
-
-      title.innerText = 'Leitor de códigos'
-
-      form.appendChild(title)
-      form.appendChild(data)
-      form.appendChild(btn)
-
-      reader.document.body.appendChild(form)
-      
-      form.addEventListener('submit', (e) => {
-        e.preventDefault()
-
-        this.notifyListeners('scan_result', {
-          labelType: 'EAN13',
-          scanData: data.value,
-          source: 'VIRTUAL'
-        } as DataWedgeScanResult)
-        form.reset()
-      })
+    listenersMap.set(eventName, l)
+    
+    return {
+      remove: async () => {
+        l.delete(listenerFunc)
+      }
     }
   }
 
-  async createProfile(options: { name: string; }): Promise<any> {
-    console.debug('DW: createProfile', options);
+  protected notifyListeners(eventName: string, data: any): void {
+    const l = listenersMap.get(eventName) ?? new Set()
 
-    if (window.confirm('Abrir leitor de códigos virtual?')) {
-      this.initVirtual()
-    }
+    console.log('DW: notifyListeners', l);
+    
+    
+    l.forEach((listener) => listener(data))
+  }
+
+  scan(data: Partial<DataWedgeScanResult>) {
+    this.notifyListeners('scan_result', {
+      labelType: 'EAN13',
+      scanData: '1234567890128',
+      source: 'scanner',
+      ...data
+    } as DataWedgeScanResult)
+  }
+
+  async createProfile(_options: { name: string; }): Promise<any> {
+    console.debug('DW: createProfile');
+
+    this.initVirtual()
   }
 
   alert(): void {

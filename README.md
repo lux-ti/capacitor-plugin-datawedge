@@ -13,9 +13,10 @@ npx cap sync
 
 <docgen-index>
 
-* [`createProfile(...)`](#createprofile)
 * [`addListener(E, ...)`](#addlistenere)
 * [`removeAllListeners()`](#removealllisteners)
+* [`createProfile(...)`](#createprofile)
+* [`alert()`](#alert)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 
@@ -23,21 +24,6 @@ npx cap sync
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
-
-### createProfile(...)
-
-```typescript
-createProfile(options: { name: string; }) => any
-```
-
-| Param         | Type                           |
-| ------------- | ------------------------------ |
-| **`options`** | <code>{ name: string; }</code> |
-
-**Returns:** <code>any</code>
-
---------------------
-
 
 ### addListener(E, ...)
 
@@ -59,6 +45,30 @@ addListener<E extends keyof DataWedgeEvents>(eventName: E, listenerFunc: (event:
 
 ```typescript
 removeAllListeners() => void
+```
+
+--------------------
+
+
+### createProfile(...)
+
+```typescript
+createProfile(options: { name: string; }) => any
+```
+
+| Param         | Type                           |
+| ------------- | ------------------------------ |
+| **`options`** | <code>{ name: string; }</code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### alert()
+
+```typescript
+alert() => void
 ```
 
 --------------------
