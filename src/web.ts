@@ -12,9 +12,7 @@ export class DataWedgeWeb extends WebPlugin implements DataWedgePlugin {
   }
 
   // @ts-ignore
-  addListener(eventName: any, listenerFunc: any): PluginListenerHandle {   
-    console.log('DW: addListener', eventName, listenerFunc);
-     
+  addListener(eventName: any, listenerFunc: any): PluginListenerHandle {        
     const l = listenersMap.get(eventName) ?? new Set()
 
     l.add(listenerFunc)
@@ -29,10 +27,7 @@ export class DataWedgeWeb extends WebPlugin implements DataWedgePlugin {
   }
 
   protected notifyListeners(eventName: string, data: any): void {
-    const l = listenersMap.get(eventName) ?? new Set()
-
-    console.log('DW: notifyListeners', l);
-    
+    const l = listenersMap.get(eventName) ?? new Set()    
     
     l.forEach((listener) => listener(data))
   }
