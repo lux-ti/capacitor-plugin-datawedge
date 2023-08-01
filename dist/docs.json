@@ -1,0 +1,175 @@
+{
+  "api": {
+    "name": "DataWedgePlugin",
+    "slug": "datawedgeplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "addListener",
+        "signature": "<E extends keyof DataWedgeEvents>(eventName: E, listenerFunc: (event: DataWedgeEvents[E]) => void) => PluginListenerHandle",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "E"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: DataWedgeEvents[E]) => void"
+          }
+        ],
+        "returns": "PluginListenerHandle",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "DataWedgeEvents",
+          "E"
+        ],
+        "slug": "addlistenere"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => void",
+        "parameters": [],
+        "returns": "void",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      },
+      {
+        "name": "createProfile",
+        "signature": "(options: { name: string; }) => any",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ name: string; }"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "createprofile"
+      },
+      {
+        "name": "alert",
+        "signature": "() => void",
+        "parameters": [],
+        "returns": "void",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "alert"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => any"
+        }
+      ]
+    },
+    {
+      "name": "DataWedgeCommandResult",
+      "slug": "datawedgecommandresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "result",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "command",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "info",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "commandId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "DataWedgeScanResult",
+      "slug": "datawedgescanresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "scanData",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "labelType",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "DataWedgeEvents",
+      "slug": "datawedgeevents",
+      "docs": "",
+      "types": [
+        {
+          "text": "{\n  ready: {}\n  action_result: DataWedgeCommandResult;\n  scan_result: DataWedgeScanResult;\n}",
+          "complexTypes": [
+            "DataWedgeCommandResult",
+            "DataWedgeScanResult"
+          ]
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}
