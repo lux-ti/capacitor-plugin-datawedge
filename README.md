@@ -53,14 +53,14 @@ removeAllListeners() => void
 ### createProfile(...)
 
 ```typescript
-createProfile(options: { name: string; }) => any
+createProfile(options: { name: string; }) => Promise<any>
 ```
 
 | Param         | Type                           |
 | ------------- | ------------------------------ |
 | **`options`** | <code>{ name: string; }</code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
 
 --------------------
 
@@ -79,9 +79,9 @@ alert() => void
 
 #### PluginListenerHandle
 
-| Prop         | Type                      |
-| ------------ | ------------------------- |
-| **`remove`** | <code>() =&gt; any</code> |
+| Prop         | Type                                      |
+| ------------ | ----------------------------------------- |
+| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
 
 
 #### DataWedgeCommandResult
@@ -108,6 +108,6 @@ alert() => void
 
 #### DataWedgeEvents
 
-<code>{ ready: {} action_result: <a href="#datawedgecommandresult">DataWedgeCommandResult</a>; scan_result: <a href="#datawedgescanresult">DataWedgeScanResult</a>; }</code>
+<code>{ ready: {} action_result: <a href="#datawedgecommandresult">DataWedgeCommandResult</a>; scan_result: <a href="#datawedgescanresult">DataWedgeScanResult</a>; }</code>
 
 </docgen-api>

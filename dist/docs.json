@@ -42,7 +42,7 @@
       },
       {
         "name": "createProfile",
-        "signature": "(options: { name: string; }) => any",
+        "signature": "(options: { name: string; }) => Promise<any>",
         "parameters": [
           {
             "name": "options",
@@ -50,7 +50,7 @@
             "type": "{ name: string; }"
           }
         ],
-        "returns": "any",
+        "returns": "Promise<any>",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -82,7 +82,7 @@
           "tags": [],
           "docs": "",
           "complexTypes": [],
-          "type": "() => any"
+          "type": "() => Promise<void>"
         }
       ]
     },
@@ -162,7 +162,7 @@
       "docs": "",
       "types": [
         {
-          "text": "{\n  ready: {}\n  action_result: DataWedgeCommandResult;\n  scan_result: DataWedgeScanResult;\n}",
+          "text": "{\r\n  ready: {}\r\n  action_result: DataWedgeCommandResult;\r\n  scan_result: DataWedgeScanResult;\r\n}",
           "complexTypes": [
             "DataWedgeCommandResult",
             "DataWedgeScanResult"
