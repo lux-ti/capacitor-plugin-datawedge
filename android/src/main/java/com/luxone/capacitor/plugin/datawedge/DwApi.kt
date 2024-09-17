@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import java.util.UUID
+import android.content.Context
 
 class DwApi(private val plugin: DataWedgePlugin) {
     private val receiver: BroadcastReceiver
@@ -41,7 +42,7 @@ class DwApi(private val plugin: DataWedgePlugin) {
         intentFilter.addAction(ACTION_DATAWEDGE)
         intentFilter.addAction(ACTION_RESULT_NOTIFICATION)
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT)
-        this.plugin.context.registerReceiver(this.receiver, intentFilter)
+        this.plugin.context.registerReceiver(this.receiver, intentFilter, Context.RECEIVER_EXPORTED)
     }
 
     fun destroy(){
